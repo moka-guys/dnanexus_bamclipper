@@ -1,0 +1,81 @@
+{
+  "name": "bamclipper_v1.0",
+  "title": "bamclipper v1.0",
+  "summary": "v1.0 - Remove primer sequences from amplicons",
+  "tags": [
+    "Cancer",
+    "Swift"
+  ],
+  "properties": {
+    "github release": "v1.0"
+  },
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "BAM_in",
+      "label": "BAM",
+      "help": "BAM file.",
+      "class": "file",
+      "patterns": ["*.bam"],
+      "optional": false
+    },
+    {
+      "name": "upstream",
+      "label": "upstream",
+      "help": "number of nucleotide upstream to 5' most nucleotide of primer (in addition to 5' most nucleotide of primer) for assigning alignments to primers based on the alignment starting position. [1]",
+      "class": "string",
+      "optional": true
+    },
+    {
+      "name": "downstream",
+      "label": "downstream",
+      "help": " number of nucleotide downstream to 5' most nucleotide of primer (in addition to 5' most nucleotide of primer) for assigning alignments to primers based on the alignment starting position. [5]",
+      "class": "string",
+      "optional": true
+    },
+    {
+      "name": "primers",
+      "label": "primer sequences",
+      "help": "Primer sequences in bedpe format.",
+      "class": "file",
+      "patterns": ["*.bed"],
+      "optional": false
+    }
+  ],
+  "outputSpec": [
+    {
+      "name": "clipped_bam",
+      "label": "clipped bamfile",
+      "help": "",
+      "class": "file"
+    },
+    {
+      "name": "clipped_bai",
+      "label": "clipped bam index",
+      "help": "",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+    ],
+    "file": "src/code.sh",
+    "release": "14.04",
+    "interpreter": "bash",
+    "distribution": "Ubuntu"
+  },
+  "access": {
+    "network": [
+      "*"
+    ]
+  },
+  "regionalOptions": {
+    "aws:us-east-1": {
+      "systemRequirements": {
+        "main": {
+          "instanceType": "mem1_ssd1_x4"
+        }
+      }
+    }
+  }
+}
