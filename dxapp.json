@@ -1,7 +1,7 @@
 {
   "name": "bamclipper_v1.0",
   "title": "bamclipper v1.0",
-  "summary": "v1.0 - Remove primer sequences from amplicons",
+  "summary": "v1.0 - Softclip primer sequences from the ends of aligned templates.",
   "tags": [
     "Cancer",
     "Swift"
@@ -35,8 +35,8 @@
     },
     {
       "name": "primers",
-      "label": "primer sequences",
-      "help": "Primer sequences in bedpe format.",
+      "label": "primer coordinates",
+      "help": "Primer coordinates in bedpe format.",
       "class": "file",
       "patterns": ["*.bed"],
       "optional": false
@@ -58,6 +58,8 @@
   ],
   "runSpec": {
     "execDepends": [
+      {"name": "parallel",
+      "version": "20130922-1"}
     ],
     "file": "src/code.sh",
     "release": "14.04",
