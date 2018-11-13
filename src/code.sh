@@ -12,8 +12,10 @@ dx-download-all-inputs --parallel
 #make output folders
 mkdir -p out/clipped_bam/output/ out/clipped_bai/output/
 
-# build the extra arguments if given
+# create variable $opts to hold extra arguments.
+# use nproc to determine the number of processors available
 opts="-n `nproc`"
+# check if upstream and downstream variables are given add to $opts
 if [[ $upstream != "" ]]; then
   opts="$opts -u $upstream"
 fi
@@ -21,13 +23,13 @@ if [[ $downstream != "" ]]; then
   opts="$opts -d $downstream"
 fi
 
-#index bamfile
+#index bamfile using samtools
 samtools/bin/samtools index $BAM_in_path
 
-# run bamclipper
+# run bamclipper providing path to BAM (-b), path to BEDPE file (-p) path to samtools (-s) and $opts
 bamclipper/bamclipper.sh -b $BAM_in_path -p $primers_path $opts -s /home/dnanexus/samtools/bin/samtools
 
-# move outputs 
+# move outputs to the output folders
 mv $BAM_in_prefix.primerclipped.bam out/clipped_bam/output/
 mv $BAM_in_prefix.primerclipped.bam.bai out/clipped_bai/output/
 
