@@ -13,11 +13,12 @@ This app is used for amplicon based panels.
 ## What data are required for this app to run?
 * Aligned reads (BAM file)
 * BEDPE detailing the primer coordinates.
-* upstream and downstream - integers to extend the softclipping outside the primer sequences
+* Upstream (optional) - Each read must be assigned to a amplicon as defined by the 5' primer start coordinate. These parameters allow this window to be extended upstream so reads can be assigned to this amplicon. If not given BAMclipper defaults to 1 (by default the app does not provide a value).
+* Downstream (optional) - as above per upstream extend the window to assigned reads to a amplicon. If not given BAMclipper defaults to 5 (by default the app does not provide a value).
 
 
 The BEDPE file has the following required fields:
-> chr   start   stop    chr    start   stop 
+> chr1   start1   stop1    chr2    start2   stop2
 
 (additonal optional fields such as name can be added - see [here](https://bedtools.readthedocs.io/en/latest/content/general-usage.html#bedpe-format).
 

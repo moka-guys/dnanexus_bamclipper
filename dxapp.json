@@ -22,14 +22,14 @@
     {
       "name": "upstream",
       "label": "upstream",
-      "help": "number of nucleotide upstream to 5' most nucleotide of primer (in addition to 5' most nucleotide of primer) for assigning alignments to primers based on the alignment starting position. [1]",
+      "help": "In order to assign a read to an amplicon the read must match the position of the 5' most nucleotide of a primer. Upstream extends this window upstream by the given number of bases. If not supplied BAMclipper defaults to 1",
       "class": "string",
       "optional": true
     },
     {
       "name": "downstream",
       "label": "downstream",
-      "help": " number of nucleotide downstream to 5' most nucleotide of primer (in addition to 5' most nucleotide of primer) for assigning alignments to primers based on the alignment starting position. [5]",
+      "help": "In order to assign a read to an amplicon the read must match the position of the 5' most nucleotide of a primer. Downstream extends this window downstream by the given number of bases. If not supplied BAMclipper defaults to 5",
       "class": "string",
       "optional": true
     },
