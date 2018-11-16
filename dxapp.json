@@ -1,0 +1,83 @@
+{
+  "name": "bamclipper_v1.0",
+  "title": "bamclipper v1.0",
+  "summary": "v1.0 - Softclip primer sequences from the ends of aligned templates.",
+  "tags": [
+    "Cancer",
+    "Swift"
+  ],
+  "properties": {
+    "github release": "v1.0"
+  },
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "BAM_in",
+      "label": "BAM",
+      "help": "BAM file.",
+      "class": "file",
+      "patterns": ["*.bam"],
+      "optional": false
+    },
+    {
+      "name": "upstream",
+      "label": "upstream",
+      "help": "In order to assign a read to an amplicon the read must match the position of the 5' most nucleotide of a primer. Upstream extends this window upstream by the given number of bases. If not supplied BAMclipper defaults to 1",
+      "class": "string",
+      "optional": true
+    },
+    {
+      "name": "downstream",
+      "label": "downstream",
+      "help": "In order to assign a read to an amplicon the read must match the position of the 5' most nucleotide of a primer. Downstream extends this window downstream by the given number of bases. If not supplied BAMclipper defaults to 5",
+      "class": "string",
+      "optional": true
+    },
+    {
+      "name": "primers",
+      "label": "primer coordinates",
+      "help": "Primer coordinates in bedpe format.",
+      "class": "file",
+      "patterns": ["*.bed"],
+      "optional": false
+    }
+  ],
+  "outputSpec": [
+    {
+      "name": "clipped_bam",
+      "label": "clipped bamfile",
+      "help": "",
+      "class": "file"
+    },
+    {
+      "name": "clipped_bai",
+      "label": "clipped bam index",
+      "help": "",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {"name": "parallel",
+      "version": "20130922-1"}
+    ],
+    "file": "src/code.sh",
+    "release": "14.04",
+    "interpreter": "bash",
+    "distribution": "Ubuntu"
+  },
+  "access": {
+    "network": [
+      "*"
+    ]
+  },
+  "regionalOptions": {
+    "aws:us-east-1": {
+      "systemRequirements": {
+        "main": {
+          "instanceType": "mem1_ssd1_x4"
+        }
+      }
+    }
+  }
+}
