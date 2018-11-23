@@ -31,7 +31,7 @@ As with all BED files, start positions are zero based, end position are one base
 ## How does this app work?
 * Installs GNU parallel from apt-get (specifying required version)
 * Builds the BAMClipper arguments including inputs described above and the path to SAMtools (packaged up in the app).
-* Execute packaged instance of BAMClipper using above arguments
+* Execute packaged instance of BAMClipper (v1.1.1) using above arguments
 
 ## Custom modifications
 * The app was made by Viapath Genome Informatics
